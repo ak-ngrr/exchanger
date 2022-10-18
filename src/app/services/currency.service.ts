@@ -23,8 +23,8 @@ export class CurrencyService {
  */
 
   getCurrencySymbols() {
-    // return this.http.get<CurrencyConversionresponse>("https://api.apilayer.com/fixer/symbols", { headers: this.myHeaders });
-    return of(symbols);
+    return this.http.get<CurrencyConversionresponse>("https://api.apilayer.com/fixer/symbols", { headers: this.myHeaders });
+    // return of(symbols);
   }
 
   /**
@@ -36,8 +36,8 @@ export class CurrencyService {
  */
 
   getConversion(amount: string, from: string, to: string) {
-    // return this.http.get<CurrencyConversionresponse>(`https://api.apilayer.com/fixer/convert?to=${to}&from=${from}&amount=${amount}`, { headers: this.myHeaders });
-    return of(conversion);
+    return this.http.get<CurrencyConversionresponse>(`https://api.apilayer.com/fixer/convert?to=${to}&from=${from}&amount=${amount}`, { headers: this.myHeaders });
+    // return of(conversion);
   }
 
   /**
@@ -47,18 +47,18 @@ export class CurrencyService {
 * @returns Observable
 */
   getPopularCurrencyConversions(from: string, to: string) {
-    // return this.http.get<CurrencyConversionresponse>(`https://api.apilayer.com/fixer/latest?symbols=${to}&base=${from}`, { headers: this.myHeaders });
-    return of(latest);
+    return this.http.get<CurrencyConversionresponse>(`https://api.apilayer.com/fixer/latest?symbols=${to}&base=${from}`, { headers: this.myHeaders });
+    // return of(latest);
   }
 
-    /**
+  /**
 * For getting historical rates of the desired currency
 * @param from base currency
 * @param to desired currencies
 * @returns Observable
 */
   public requestDataForHistoricalDates(from: string, to: string, historicalDates: string[]): Observable<any[]> {
-    // return forkJoin(historicalDates.map(x => this.http.get(`https://api.apilayer.com/fixer/${x}?symbols=${to}&base=${from}`, { headers: this.myHeaders })));
-    return of(historicalRatesResponse)
+    return forkJoin(historicalDates.map(x => this.http.get(`https://api.apilayer.com/fixer/${x}?symbols=${to}&base=${from}`, { headers: this.myHeaders })));
+    // return of(historicalRatesResponse)
   }
 }
