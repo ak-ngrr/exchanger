@@ -1,20 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DetailsComponent } from './components/details/details.component';
-import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
   {
-    path:'',
-    component: HomeComponent
+    path: '',
+    loadChildren: () => import('./features/currency/currency.module').then((m) => m.CurrencyModule),
+
   },
   {
-    path:'home',
-    component: HomeComponent
-  },
-  {
-    path:'details',
-    component: DetailsComponent
+    path: 'currency',
+    loadChildren: () => import('./features/currency/currency.module').then((m) => m.CurrencyModule),
   }
 ];
 

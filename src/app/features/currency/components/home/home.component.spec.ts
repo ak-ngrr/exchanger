@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { Router } from '@angular/router';
-import { CurrencyService } from 'src/app/services/currency.service';
+import { CurrencyService } from 'src/app/shared/services/currency.service';
 import { HomeComponent } from './home.component';
 import { conversion } from 'src/app/mock/conversion';
 import { of } from 'rxjs';
@@ -115,7 +115,7 @@ describe('HomeComponent', () => {
 
 
     it('should reset Amount', () => {
-      let button = fixture.debugElement.nativeElement.querySelector('button');
+      const button = fixture.debugElement.nativeElement.querySelector('button');
       button.click();
       fixture.whenStable().then(() => {
         expect(component.resetAmount).toHaveBeenCalled();
