@@ -8,7 +8,7 @@ describe('NavigationBarComponent', () => {
   let fixture: ComponentFixture<NavigationBarComponent>;
 
   beforeEach(() => {
-    const routerStub = () => ({ navigate: (array: any) => ({}) });
+    const routerStub = () => ({ navigate: (array: any[]) => ({}) });
     TestBed.configureTestingModule({
       schemas: [NO_ERRORS_SCHEMA],
       declarations: [NavigationBarComponent],

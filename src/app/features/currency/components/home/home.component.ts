@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   rate = new FormControl('');
   convertedCurrency = new FormControl('');
 
-  currencySymbols: any[] = [];
+  currencySymbols: string[] = [];
   popularConversions: any[] = [];
   popularCurrencies = popularCurrencies;
   private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);

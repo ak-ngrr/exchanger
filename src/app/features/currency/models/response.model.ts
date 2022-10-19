@@ -11,10 +11,10 @@ export interface Info {
 
 export interface CurrencyConversionresponse {
     success: boolean;
-    query: Query;
-    info: Info;
-    date: string;
-    result: number;
+    query?: Query;
+    info?: Info;
+    date?: string;
+    result?: number;
 }
 
 
