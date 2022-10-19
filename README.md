@@ -24,3 +24,8 @@
 
 ![image](https://user-images.githubusercontent.com/108716795/196702954-967e6739-f03d-40ea-beae-89eb6de4cccd.png)
 
+# Application screenshots
+![home](https://user-images.githubusercontent.com/108716795/196707451-b3bfb028-70de-43cb-b187-0227eb25ab3a.png)
+
+![image](https://user-images.githubusercontent.com/108716795/196707384-e9c7a841-98b3-42b9-8b8c-7792f26d4ecb.png)
+
