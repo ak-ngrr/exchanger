@@ -1,32 +1,30 @@
-.header {
-  margin: 50px 20px;
-}
 .row {
-  // margin-left: 0px;
-  // margin-right: 0px;
   margin: 30px 0px;
   padding-left: 0px;
   padding-right: 0px;
-}
+  .header {
+    margin: 50px 20px;
+  }
+  .btn-back-to-home {
+    text-align: right;
+  }
+  .btn-swap-container {
+    text-align: center;
+  }
+  .btn-swap {
+    cursor: pointer;
+  }
+  .converted-currency {
+    font-weight: bold;
+  }
 
-#btn-swap-container {
-  text-align: center;
-}
-.mat-button,
-.mat-input,
-.mat-form-field {
-  width: 100%;
-}
-.card {
-  box-sizing: border-box;
-  padding: 10px;
-}
-#btn-swap {
-  cursor: pointer;
-}
-#convertedCurrency {
-  font-weight: bold;
-}
-#btn-back-to-home {
-  text-align: right;
+  .mat-button {
+    width: 100%;
+  }
+  .mat-input {
+    width: 100%;
+  }
+  .mat-form-field {
+    width: 100%;
+  }
 }
