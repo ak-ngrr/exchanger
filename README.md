@@ -5,13 +5,13 @@
 - The application needs a valid token to fetch the information from the api server.  That can be foung in the file "src\app\core\contants.ts". User would need to replace it with a new valid token and then can run the application.
 
 - Command to run the application
-  ng serve
+  **ng serve**
 - Command to run unit test cases
-  ng test
+  **ng test**
 - Command to run unit test cases with code coverage
-  ng test --code-coverage
+  **ng test --code-coverage**
 - Command to run unit test cases
-  ng lint  
+  **ng lint**  
 
 # Various code practices being followed in the development are as follows-
 - Lazy loading
