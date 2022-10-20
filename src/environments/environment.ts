@@ -6,6 +6,8 @@ export const environment = {
   production: false
 };
 
+export const API_KEY = "test";
+export const API_ENDPOINT_BASE_URL = "https://api.apilayer.com/fixer";
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
