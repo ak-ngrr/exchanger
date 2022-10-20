@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { HomeComponent } from './home.component';
 import { conversion } from 'src/app/mock/conversion';
 import { of } from 'rxjs';
-import { CurrencyService } from '../../services/currency.service';
+import { CurrencyApiService } from 'src/app/core/api/currency-api.service';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -12,7 +12,7 @@ describe('HomeComponent', () => {
 
   beforeEach(() => {
     const routerStub = () => ({ navigate: (array: any) => ({}) });
-    const currencyServiceStub = () => ({
+    const currencyApiServiceStub = () => ({
       getCurrencySymbols: () => ({ subscribe: (f: any) => f({}) }),
       getConversion: (value: string, value1: string, value2: string) => ({ subscribe: (f: any) => f({}) }),
       getPopularCurrencyConversions: (value: string, popularCurrencies: string) => ({
@@ -24,7 +24,7 @@ describe('HomeComponent', () => {
       declarations: [HomeComponent],
       providers: [
         { provide: Router, useFactory: routerStub },
-        { provide: CurrencyService, useFactory: currencyServiceStub }
+        { provide: CurrencyApiService, useFactory: currencyApiServiceStub }
       ]
     });
     fixture = TestBed.createComponent(HomeComponent);
@@ -65,37 +65,37 @@ describe('HomeComponent', () => {
 
   describe('getCurrencySymbols', () => {
     xit('makes expected calls', () => {
-      const currencyServiceStub: CurrencyService = fixture.debugElement.injector.get(
-        CurrencyService
+      const currencyApiServiceStub: CurrencyApiService = fixture.debugElement.injector.get(
+        CurrencyApiService
       );
-      spyOn(currencyServiceStub, 'getCurrencySymbols').and.callThrough();
+      spyOn(currencyApiServiceStub, 'getCurrencySymbols').and.callThrough();
       component.getCurrencySymbols();
-      expect(currencyServiceStub.getCurrencySymbols).toHaveBeenCalled();
+      expect(currencyApiServiceStub.getCurrencySymbols).toHaveBeenCalled();
     });
   });
 
   describe('convert', () => {
     xit('makes expected calls', () => {
-      const currencyServiceStub: CurrencyService = fixture.debugElement.injector.get(
-        CurrencyService
+      const currencyApiServiceStub: CurrencyApiService = fixture.debugElement.injector.get(
+        CurrencyApiService
       );
-      spyOn(currencyServiceStub, 'getConversion').and.callThrough().and.returnValue(of(conversion));
+      spyOn(currencyApiServiceStub, 'getConversion').and.callThrough().and.returnValue(of(conversion));
       component.convert();
-      expect(currencyServiceStub.getConversion).toHaveBeenCalled();
+      expect(currencyApiServiceStub.getConversion).toHaveBeenCalled();
     });
   });
 
   describe('ConvertToPopularCurrecies', () => {
     xit('makes expected calls', () => {
-      const currencyServiceStub: CurrencyService = fixture.debugElement.injector.get(
-        CurrencyService
+      const currencyApiServiceStub: CurrencyApiService = fixture.debugElement.injector.get(
+        CurrencyApiService
       );
       spyOn(
-        currencyServiceStub,
+        currencyApiServiceStub,
         'getPopularCurrencyConversions'
       ).and.callThrough();
       expect(
-        currencyServiceStub.getPopularCurrencyConversions
+        currencyApiServiceStub.getPopularCurrencyConversions
       ).toHaveBeenCalled();
     });
   });

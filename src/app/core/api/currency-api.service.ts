@@ -1,12 +1,12 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { forkJoin, Observable, Subject } from 'rxjs';
+import { CurrencyConversionresponse } from 'src/app/features/currency/models/response.model';
 import { API_ENDPOINT_BASE_URL, API_KEY } from 'src/environments/environment';
-import { CurrencyConversionresponse } from '../models/response.model';
 @Injectable({
   providedIn: 'root'
 })
-export class CurrencyService {
+export class CurrencyApiService {
   private endSubs$ = new Subject();
   myHeaders: HttpHeaders;
   constructor(private http: HttpClient) {

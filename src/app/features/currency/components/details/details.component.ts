@@ -2,9 +2,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { concatMap, forkJoin, ReplaySubject, takeUntil } from 'rxjs';
+import { CurrencyApiService } from 'src/app/core/api/currency-api.service';
 import { historicalDates, months } from '../../constants';
 import { CurrencyConversionresponse } from '../../models/response.model';
-import { CurrencyService } from '../../services/currency.service';
 
 @Component({
   selector: 'app-details',
@@ -22,7 +22,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
   historicaldata: any[] = [];
   historicalMonths = months.map((m, i) => months[parseInt(historicalDates[i].split('-')[1]) - 1]);
   private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
-  constructor(private route: ActivatedRoute, private router: Router, private currencySevice: CurrencyService,) { }
+  constructor(private route: ActivatedRoute, private router: Router, private currencyApiService: CurrencyApiService,) { }
 
   ngOnInit(): void {
     this.route.paramMap
@@ -30,8 +30,8 @@ export class DetailsComponent implements OnInit, OnDestroy {
         concatMap(params => {
           this.setValues(params);
           return forkJoin([
-            this.currencySevice.getCurrencySymbols(),
-            this.currencySevice.requestDataForHistoricalDates(this.from.value, this.to.value, historicalDates)
+            this.currencyApiService.getCurrencySymbols(),
+            this.currencyApiService.requestDataForHistoricalDates(this.from.value, this.to.value, historicalDates)
           ]);
         })
       )
@@ -81,14 +81,14 @@ export class DetailsComponent implements OnInit, OnDestroy {
   * For converion from base currency to a desired currency
   */
   convert() {
-    this.currencySevice.getConversion(this.amount.value, this.from.value, this.to.value)
+    this.currencyApiService.getConversion(this.amount.value, this.from.value, this.to.value)
       .pipe(
         concatMap((response: CurrencyConversionresponse) => {
           if (response && response.info && response.info.rate && response.result) {
             this.rate.setValue(`1.00 ${this.from.value} = ${response.info.rate} ${this.to.value}`);
             this.convertedCurrency.setValue(`${response.result} ${this.to.value}`);
           }
-          return this.currencySevice.requestDataForHistoricalDates(this.from.value, this.to.value, historicalDates)
+          return this.currencyApiService.requestDataForHistoricalDates(this.from.value, this.to.value, historicalDates)
         })
       )
       .pipe(takeUntil(this.destroyed$))

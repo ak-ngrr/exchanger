@@ -2,9 +2,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { concatMap, ReplaySubject, takeUntil } from 'rxjs';
+import { CurrencyApiService } from 'src/app/core/api/currency-api.service';
 import { popularCurrencies } from '../../constants';
 import { CurrencyConversionresponse } from '../../models/response.model';
-import { CurrencyService } from '../../services/currency.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   popularCurrencies = popularCurrencies;
   private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
 
-  constructor(private currencySevice: CurrencyService,
+  constructor(private currencyApiService: CurrencyApiService,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   * For getting list of all the currencies
   */
   getCurrencySymbols() {
-    this.currencySevice.getCurrencySymbols()
+    this.currencyApiService.getCurrencySymbols()
       .pipe(takeUntil(this.destroyed$))
       .subscribe((response: any) => {
         if (typeof response.symbols == 'object')
@@ -57,7 +57,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   * For converion from base currency to a desired currency
   */
   convert() {
-    this.currencySevice.getConversion(this.amount.value, this.from.value, this.to.value)
+    this.currencyApiService.getConversion(this.amount.value, this.from.value, this.to.value)
       .pipe(
         concatMap((response: CurrencyConversionresponse) => {
           if (response && response.info && response.info.rate && response.result) {
@@ -65,7 +65,7 @@ export class HomeComponent implements OnInit, OnDestroy {
             this.convertedCurrency.setValue(`${response.result} ${this.to.value}`)
           }
           const popularCurrencies = this.popularCurrencies.join(',');
-          return this.currencySevice.getPopularCurrencyConversions(this.from.value, popularCurrencies)
+          return this.currencyApiService.getPopularCurrencyConversions(this.from.value, popularCurrencies)
         })
       )
       .pipe(takeUntil(this.destroyed$))
