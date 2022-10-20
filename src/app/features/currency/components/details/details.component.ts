@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { concatMap, forkJoin, ReplaySubject, takeUntil } from 'rxjs';
+import { concatMap, forkJoin, Subject, takeUntil } from 'rxjs';
 import { CurrencyApiService } from 'src/app/core/api/currency-api.service';
-import { historicalDates, months } from '../../constants';
+import { historicalDates, months } from '../../../../shared/core/constants';
 import { CurrencyConversionresponse } from '../../models/response.model';
 
 @Component({
@@ -21,7 +21,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
   currencySymbols = ['']
   historicaldata: any[] = [];
   historicalMonths = months.map((m, i) => months[parseInt(historicalDates[i].split('-')[1]) - 1]);
-  private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
+  private destroyed$: Subject<boolean> = new Subject();
   constructor(private route: ActivatedRoute, private router: Router, private currencyApiService: CurrencyApiService,) { }
 
   ngOnInit(): void {

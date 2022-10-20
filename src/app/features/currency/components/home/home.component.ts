@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { concatMap, ReplaySubject, takeUntil } from 'rxjs';
+import { concatMap, Subject, takeUntil } from 'rxjs';
 import { CurrencyApiService } from 'src/app/core/api/currency-api.service';
-import { popularCurrencies } from '../../constants';
+import { popularCurrencies } from '../../../../shared/core/constants';
 import { CurrencyConversionresponse } from '../../models/response.model';
 @Component({
   selector: 'app-home',
@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   currencySymbols: string[] = [];
   popularConversions: any[] = [];
   popularCurrencies = popularCurrencies;
-  private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
+  private destroyed$: Subject<boolean> = new Subject();
 
   constructor(private currencyApiService: CurrencyApiService,
     private router: Router) { }
