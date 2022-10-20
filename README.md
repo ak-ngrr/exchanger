@@ -1,27 +1,31 @@
-# CurrencyExchange
+# Currency Exchanger
+- This application has allows to get real time currency conversion for various currencies being used worldwide. Also the It allows users to see detailed information about a particular currency which includes historical rates as well. The historical data can be seen graphically also (in Bar Chart).
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.3.
+# Steps to run the application
+- The application needs a valid token to fetch the information from the api server.  That can be foung in the file "src\app\core\contants.ts". User would need to replace it with a new valid token and then can run the application.
 
-## Development server
+- Command to run the application
+  **ng serve**
+- Command to run unit test cases
+  **ng test**
+- Command to run unit test cases with code coverage
+  **ng test --code-coverage**
+- Command to run unit test cases
+  **ng lint**  
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+# Various code practices being followed in the development are as follows-
+- Lazy loading
+- Linting etc.
+- RxJs
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+# Unit test coverage
+- Unit test cases has also been written and the current coverage for the same can be reffered below-
 
-## Build
+![image](https://user-images.githubusercontent.com/108716795/196702954-967e6739-f03d-40ea-beae-89eb6de4cccd.png)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+# Application screenshots
+![home](https://user-images.githubusercontent.com/108716795/196707451-b3bfb028-70de-43cb-b187-0227eb25ab3a.png)
 
-## Running unit tests
+![image](https://user-images.githubusercontent.com/108716795/196707384-e9c7a841-98b3-42b9-8b8c-7792f26d4ecb.png)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
