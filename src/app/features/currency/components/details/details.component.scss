@@ -11,7 +11,9 @@
   .btn-swap-container {
     text-align: center;
   }
-  .btn-swap {
+  mat-icon.btn-swap {
+    line-height: 50px;
+    font-size: 50px;
     cursor: pointer;
   }
   .converted-currency {

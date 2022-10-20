@@ -19,7 +19,9 @@
     padding: 10px;
     margin: 15px 10px;
   }
-  .btn-swap {
+  mat-icon.btn-swap {
+    line-height: 50px;
+    font-size: 50px;
     cursor: pointer;
   }
   .converted-currency {
