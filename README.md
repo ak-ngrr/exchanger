@@ -15,7 +15,7 @@ Details of different components
 - A web browser
 
 # Steps to run the application
-- The application needs a valid token to fetch the information from the api server.  That can be foung in the file "src\app\core\contants.ts". User would need to replace it with a new valid token and then can run the application.
+- The application needs a valid token to fetch the information from the api server.  That can be found in the file "src\environments\environment.ts". User would need to replace API_KEY with a new valid token and then can run the application.
 
 - Command to run the application
   **ng serve**
