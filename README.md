@@ -1,11 +1,12 @@
 # Currency Exchanger
 - This application has allows to get real time currency conversion for various currencies being used worldwide. Also the It allows users to see detailed information about a particular currency which includes historical rates as well. The historical data can be seen graphically also (in Bar Chart).
 
-List of pages 
+Details of different components 
   - Home Page : User can select any of the available currenciews from the "To" and "From" dropdowns and enter the amount to be converted. Then licking on the Convert button will show the converted amount in the currency being selected in "To" dropdown.
   - Also, onversion to 9 popular currencies will also be displayed just below the conversion panel.
   - To see the detailed view, user can click on the "More Details" button which will redirect the user to the details page where the user will be able to see the historical rates of the currency in form of a Bart chart.
-  - On the details page itself , the user can change the "To" currency and click to see the corrensponding conversion and also the updated bar chart for historical rates. 
+  - On the details page itself , the user can change the "To" currency and click to see the corrensponding conversion and also the updated bar chart for historical rates. User can navigate to home page as well by clicking on "Back to Home" button.
+  - The application has a navigation bar which contains a brand log and to buttons "EUR-USD Details" and "EUR-GBP Details" which will redirect the user to the details page with the historical rates deatils for the currencies labelled as button labels.
 
 # Prerequistes to run the application
 
