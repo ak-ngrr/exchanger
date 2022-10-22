@@ -38,10 +38,9 @@ Details of different components
 
 
 # Unit test coverage
-![image](https://user-images.githubusercontent.com/108716795/197120271-b69d182c-0f03-4e9d-95b0-e133bd07c0d1.png)
 
+![image](https://user-images.githubusercontent.com/108716795/197330131-22c0ed51-210a-4684-9095-f046c8aa1f65.png)
 
-![image](https://user-images.githubusercontent.com/108716795/196702954-967e6739-f03d-40ea-beae-89eb6de4cccd.png)
 
 # Application screenshots
 ![home](https://user-images.githubusercontent.com/108716795/196707451-b3bfb028-70de-43cb-b187-0227eb25ab3a.png)
