@@ -8,12 +8,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { ChartsModule } from '@progress/kendo-angular-charts';
+import { ConvertorPanelComponent } from './components/convertor-panel/convertor-panel.component';
 import { DetailsComponent } from './components/details/details.component';
 import { HomeComponent } from './components/home/home.component';
 import { CurrencyRoutingModule } from './currency-routing-module';
 
 @NgModule({
-  declarations: [HomeComponent, DetailsComponent],
+  declarations: [HomeComponent, DetailsComponent, ConvertorPanelComponent],
   imports: [
     CommonModule,
     MatButtonModule,

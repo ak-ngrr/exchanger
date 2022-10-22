@@ -3,86 +3,10 @@
     <h1 class="header">Currency Exchanger</h1>
   </div>
 </div>
-
-<div class="row">
-  <div class="col-md-4">
-    <div class="col-md-9">
-      <mat-form-field appearance="fill">
-        <mat-label>Amount</mat-label>
-        <input matInput type="text" [formControl]="amount" />
-        <mat-error *ngIf="amount.errors"
-          >Amount is required and should be a number</mat-error
-        >
-        <button
-          matSuffix
-          mat-icon-button
-          aria-label="Clear"
-          (click)="resetAmount()"
-        >
-          <mat-icon>close</mat-icon>
-        </button>
-      </mat-form-field>
-    </div>
-  </div>
-  <div class="col-md-3">
-    <mat-form-field appearance="fill">
-      <mat-label>From</mat-label>
-      <mat-select [formControl]="from" [disabled]="this.amount.errors !== null">
-        <mat-option *ngFor="let curr of currencySymbols" [value]="curr">{{
-          curr
-        }}</mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
-  <div class="col-md-2 btn-swap-container">
-    <!-- <img src="./assets/swap-btn.svg" alt="logo"  class="btn-swap" (click)="swapCurrencySymbols()"/> -->
-    <mat-icon class="btn-swap" (click)="swapCurrencySymbols()"
-      >swap_horiz</mat-icon
-    >
-  </div>
-  <div class="col-md-3">
-    <mat-form-field appearance="fill">
-      <mat-label>To</mat-label>
-      <mat-select [formControl]="to" [disabled]="this.amount.errors !== null">
-        <mat-option *ngFor="let curr of currencySymbols" [value]="curr">{{
-          curr
-        }}</mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-md-4"></div>
-  <div class="col-md-8">
-    <button
-      mat-button
-      mat-flat-button
-      color="primary"
-      (click)="convert()"
-      [disabled]="amount.errors"
-    >
-      Convert
-    </button>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-md-4">
-    <div class="col-md-9">
-      <input matInput type="text" [formControl]="rate" />
-    </div>
-  </div>
-  <div class="col-md-4 converted-currency">
-    <input matInput type="text" [formControl]="convertedCurrency" />
-  </div>
-  <div class="col-md-4">
-    <mat-label>
-      <button mat-button color="primary" (click)="redirectToDetails()">
-        More Details
-      </button>
-    </mat-label>
-  </div>
+<div>
+  <app-convertor-panel
+    (currencyConversionEvent)="getPopularCurrencyConversions($event)"
+  ></app-convertor-panel>
 </div>
 
 <div class="row">

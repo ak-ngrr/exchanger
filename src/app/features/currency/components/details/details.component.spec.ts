@@ -1,13 +1,11 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { Router } from '@angular/router';
-import { ActivatedRoute } from '@angular/router';
-import { DetailsComponent } from './details.component';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ActivatedRoute, Router } from '@angular/router';
 import { of } from 'rxjs';
-import { conversion } from 'src/app/mock/conversion';
-import { symbols } from 'src/app/mock/symbols';
-import { historicalRatesResponse } from 'src/app/mock/historical-rates-mock';
 import { CurrencyApiService } from 'src/app/core/api/currency-api.service';
+import { historicalRatesResponse } from 'src/app/mock/historical-rates-mock';
+import { symbols } from 'src/app/mock/symbols';
+import { DetailsComponent } from './details.component';
 
 describe('DetailsComponent', () => {
   let component: DetailsComponent;
@@ -45,26 +43,7 @@ describe('DetailsComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it(`currencySymbols has default value`, () => {
-    expect(component.currencySymbols).toEqual([``]);
-  });
-
-  it(`historicaldata has default value`, () => {
-    expect(component.historicaldata).toEqual([]);
-  });
-
-
-
   describe('ngOnInit', () => {
-    it('makes expected calls', () => {
-      const currencyApiServiceStub: CurrencyApiService = fixture.debugElement.injector.get(
-        CurrencyApiService
-      );
-      spyOn(currencyApiServiceStub, 'getCurrencySymbols').and.callThrough().and.returnValue(of(symbols));
-    });
-  });
-
-  describe('getCurrencySymbols', () => {
     it('makes expected calls', () => {
       const currencyApiServiceStub: CurrencyApiService = fixture.debugElement.injector.get(
         CurrencyApiService
@@ -80,28 +59,10 @@ describe('DetailsComponent', () => {
       component.redirectToHome();
       expect(routerStub.navigate).toHaveBeenCalled();
     });
-    it('should reset Amount', () => {
-      const button = fixture.debugElement.nativeElement.querySelector('button');
-      button.click();
-      fixture.whenStable().then(() => {
-        expect(component.resetAmount).toHaveBeenCalled();
-      });
-    });
-  });
-
-  describe('convert', () => {
-    xit('makes expected calls', () => {
-      const currencyApiServiceStub: CurrencyApiService = fixture.debugElement.injector.get(
-        CurrencyApiService
-      );
-      spyOn(currencyApiServiceStub, 'getConversion').and.callThrough().and.returnValue(of(conversion));
-      component.convert();
-      expect(currencyApiServiceStub.getConversion).toHaveBeenCalled();
-    });
   });
 
   describe('gethistoricalData', () => {
-    xit('makes expected calls', () => {
+    it('makes expected calls', () => {
       const currencyApiServiceStub: CurrencyApiService = fixture.debugElement.injector.get(
         CurrencyApiService
       );
@@ -109,11 +70,10 @@ describe('DetailsComponent', () => {
         currencyApiServiceStub,
         'requestDataForHistoricalDates'
       ).and.callThrough().and.returnValue(of(historicalRatesResponse));
+      component.requestDataForHistoricalDates({ from: "USD", amount: "1", to: "INR" });
       expect(
         currencyApiServiceStub.requestDataForHistoricalDates
       ).toHaveBeenCalled();
     });
-
-
   });
 });

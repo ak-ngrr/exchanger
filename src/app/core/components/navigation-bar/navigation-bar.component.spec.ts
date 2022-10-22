@@ -1,5 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { NavigationBarComponent } from './navigation-bar.component';
 
@@ -12,7 +13,8 @@ describe('NavigationBarComponent', () => {
     TestBed.configureTestingModule({
       schemas: [NO_ERRORS_SCHEMA],
       declarations: [NavigationBarComponent],
-      providers: [{ provide: Router, useFactory: routerStub }]
+      providers: [{ provide: Router, useFactory: routerStub }],
+      imports: [HttpClientTestingModule]
     });
     fixture = TestBed.createComponent(NavigationBarComponent);
     component = fixture.componentInstance;
@@ -26,7 +28,7 @@ describe('NavigationBarComponent', () => {
     it('makes expected calls', () => {
       const routerStub: Router = fixture.debugElement.injector.get(Router);
       spyOn(routerStub, 'navigate').and.callThrough();
-      component.redirectToDetails("USD", "INR", 1000);
+      component.redirectToDetails("USD", "INR", "1000");
       expect(routerStub.navigate).toHaveBeenCalled();
     });
   });
